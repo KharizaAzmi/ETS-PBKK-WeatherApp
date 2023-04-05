@@ -34,6 +34,7 @@ namespace WeatherApp.Models
     public class List
     {
         public int dt { get; set; }
+        public string dateTime => UtcTimeLibrary.UtcTimeStamp.ConvertToUtc(dt);
         public Main main { get; set; }
         public List<Weather> weather { get; set; }
         public Clouds clouds { get; set; }
@@ -48,6 +49,7 @@ namespace WeatherApp.Models
     public class Main
     {
         public double temp { get; set; }
+        public double temperature => Math.Round(temp);
         public double feels_like { get; set; }
         public double temp_min { get; set; }
         public double temp_max { get; set; }
@@ -84,6 +86,7 @@ namespace WeatherApp.Models
         public string main { get; set; }
         public string description { get; set; }
         public string icon { get; set; }
+        public string fullIconUrl => string.Format("https://openweathermap.org/img/wn/{0}@2x.png", icon);
     }
 
     public class Wind
